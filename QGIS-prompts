@@ -1,8 +1,8 @@
-"desc" Absatz hinzufügen mit:
+"desc": Adding a \n in front of the first line of the content in the "desc" field:
 '\n'||"desc"
 
 
-"HL_lit"
+"HL_lit":
 CASE WHEN ("desc" ~ '\nlit=yes' 
 		OR "desc" ~ '\nlit=1') THEN '10'
 	WHEN ("desc" ~ '\nlit=no' 
@@ -10,7 +10,7 @@ CASE WHEN ("desc" ~ '\nlit=yes'
 	ELSE NULL
 END
 
-"SW_r_lit"
+"SW_r_lit":
 CASE WHEN ("desc" ~ '\nsidewalk:[rightboth]+:lit=yes' 
 		OR "desc" ~ '\nsidewalk:[rightboth]+:lit=1' ) THEN '10'
 	WHEN ("desc" ~ '\nsidewalk:[rightboth]+:lit=no'
@@ -18,7 +18,7 @@ CASE WHEN ("desc" ~ '\nsidewalk:[rightboth]+:lit=yes'
 	ELSE NULL
 END
 
-"SW_l_lit"
+"SW_l_lit":
 CASE WHEN ("desc" ~ '\nsidewalk:[leftboth]+:lit=yes' 
 		OR "desc" ~ '\nsidewalk:[leftboth]+:lit=1' ) THEN '10'
 	WHEN ("desc" ~ '\nsidewalk:[leftboth]+:lit=no'
@@ -26,7 +26,7 @@ CASE WHEN ("desc" ~ '\nsidewalk:[leftboth]+:lit=yes'
 	ELSE NULL
 END
 
-"CW_r_lit"
+"CW_r_lit":
 CASE WHEN ("desc" ~ '\ncycleway:[rightboth]+:lit=yes' 
 		OR "desc" ~ '\ncycleway:[rightboth]+:lit=1' ) THEN '10'
 	WHEN ("desc" ~ '\ncycleway:[rightboth]+:lit=no'
@@ -34,7 +34,7 @@ CASE WHEN ("desc" ~ '\ncycleway:[rightboth]+:lit=yes'
 	ELSE NULL
 END
 
-"CW_l_lit""
+"CW_l_lit"":
 CASE WHEN ("desc" ~ '\ncycleway:[leftboth]+:lit=yes' 
 		OR "desc" ~ '\ncycleway:[leftboth]+:lit=1' ) THEN '10'
 	WHEN ("desc" ~ '\ncycleway:[leftboth]+:lit=no'
@@ -43,7 +43,7 @@ CASE WHEN ("desc" ~ '\ncycleway:[leftboth]+:lit=yes'
 END
 
 
-"HL_cb"
+"HL_cb":
 CASE WHEN "desc" ~ '\nclass:bicycle=-3' THEN '-10'
 	WHEN "desc" ~ '\nclass:bicycle=-2' THEN '-5'
 	WHEN "desc" ~ '\nclass:bicycle=-1' THEN '-2'
@@ -55,7 +55,7 @@ END
 
 
 
-"SW_r_cb"
+"SW_r_cb":
 CASE WHEN "desc" ~ '\nsidewalk:[rightboth]+:class:bicycle=-3' THEN '-10'
 	WHEN "desc" ~ '\nsidewalk:[rightboth]+:class:bicycle=-2' THEN '-5'
 	WHEN "desc" ~ '\nsidewalk:[rightboth]+:class:bicycle=-1' THEN '-2'
@@ -65,7 +65,7 @@ CASE WHEN "desc" ~ '\nsidewalk:[rightboth]+:class:bicycle=-3' THEN '-10'
 	ELSE '0'
 END
 
-"SW_l_cb"
+"SW_l_cb":
 CASE WHEN "desc" ~ '\nsidewalk:[leftboth]+:class:bicycle=-3' THEN '-10'
 	WHEN "desc" ~ '\nsidewalk:[leftboth]+:class:bicycle=-2' THEN '-5'
 	WHEN "desc" ~ '\nsidewalk:[leftboth]+:class:bicycle=-1' THEN '-2'
@@ -75,7 +75,7 @@ CASE WHEN "desc" ~ '\nsidewalk:[leftboth]+:class:bicycle=-3' THEN '-10'
 	ELSE '0'
 END
 
-"CW_r_cb"
+"CW_r_cb":
 CASE WHEN "desc" ~ '\ncycleway:[rightboth]+:class:bicycle=-3' THEN '-10'
 	WHEN "desc" ~ '\ncycleway:[rightboth]+:class:bicycle=-2' THEN '-5'
 	WHEN "desc" ~ '\ncycleway:[rightboth]+:class:bicycle=-1' THEN '-2'
@@ -85,7 +85,7 @@ CASE WHEN "desc" ~ '\ncycleway:[rightboth]+:class:bicycle=-3' THEN '-10'
 	ELSE '0'
 END
 
-"CW_l_cb"
+"CW_l_cb":
 CASE WHEN "desc" ~ '\ncycleway:[leftboth]+:class:bicycle=-3' THEN '-10'
 	WHEN "desc" ~ '\ncycleway:[leftboth]+:class:bicycle=-2' THEN '-5'
 	WHEN "desc" ~ '\ncycleway:[leftboth]+:class:bicycle=-1' THEN '-2'
@@ -97,7 +97,7 @@ END
 
 
 
-"HL_sm"
+"HL_sm":
 CASE WHEN "desc" ~ '\nsmoothness=excellent' THEN '10'
 	WHEN "desc" ~ '\nsmoothness=good' THEN '5'
 	WHEN "desc" ~ '\nsmoothness=intermediate' THEN '-5'
@@ -105,7 +105,7 @@ CASE WHEN "desc" ~ '\nsmoothness=excellent' THEN '10'
 	ELSE NULL
 END
 
-"SW_r_sm"
+"SW_r_sm":
 CASE WHEN "desc" ~ '\nsidewalk:[rightboth]+:smoothness=excellent' THEN '10'
 	WHEN "desc" ~ '\nsidewalk:[rightboth]+:smoothness=good' THEN '5'
 	WHEN "desc" ~ '\nsidewalk:[rightboth]+:smoothness=intermediate' THEN '-5'
@@ -113,7 +113,7 @@ CASE WHEN "desc" ~ '\nsidewalk:[rightboth]+:smoothness=excellent' THEN '10'
 	ELSE NULL
 END
 
-"SW_l_sm"
+"SW_l_sm":
 CASE WHEN "desc" ~ '\nsidewalk:[leftboth]+:smoothness=excellent' THEN '10'
 	WHEN "desc" ~ '\nsidewalk:[leftboth]+:smoothness=good' THEN '5'
 	WHEN "desc" ~ '\nsidewalk:[leftboth]+:smoothness=intermediate' THEN '-5'
@@ -121,7 +121,7 @@ CASE WHEN "desc" ~ '\nsidewalk:[leftboth]+:smoothness=excellent' THEN '10'
 	ELSE NULL
 END
 
-"CW_r_sm"
+"CW_r_sm":
 CASE WHEN "desc" ~ '\ncycleway:[rightboth]+:smoothness=excellent' THEN '10'
 	WHEN "desc" ~ '\ncycleway:[rightboth]+:smoothness=good' THEN '5'
 	WHEN "desc" ~ '\ncycleway:[rightboth]+:smoothness=intermediate' THEN '-5'
@@ -129,7 +129,7 @@ CASE WHEN "desc" ~ '\ncycleway:[rightboth]+:smoothness=excellent' THEN '10'
 	ELSE NULL
 END
 
-"CW_l_sm"
+"CW_l_sm":
 CASE WHEN "desc" ~ '\ncycleway:[leftboth]+:smoothness=excellent' THEN '10'
 	WHEN "desc" ~ '\ncycleway:[leftboth]+:smoothness=good' THEN '5'
 	WHEN "desc" ~ '\ncycleway:[leftboth]+:smoothness=intermediate' THEN '-5'
@@ -140,7 +140,7 @@ END
 
 
 "HL_wn" dabei nehme ich auch =grass;sand / =gravel,sand etc. werte mit auf
-CASE WHEN "desc" ~ '\nsurface=paved' 
+CASE WHEN "desc" ~ '\nsurface=paved'
 		OR "desc" ~ '\nsurface=asphalt'
 		OR "desc" ~ '\nsurface=chipseal'
 		OR "desc" ~ '\nsurface=concrete'
