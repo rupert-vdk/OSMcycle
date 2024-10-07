@@ -1,0 +1,2275 @@
+"desc" Absatz hinzufügen mit:
+'\n'||"desc"
+
+
+"HL_lit"
+CASE WHEN ("desc" ~ '\nlit=yes' 
+		OR "desc" ~ '\nlit=1') THEN '10'
+	WHEN ("desc" ~ '\nlit=no' 
+		OR "desc" ~ '\nlit=0') THEN '0'
+	ELSE NULL
+END
+
+"SW_r_lit"
+CASE WHEN ("desc" ~ '\nsidewalk:[rightboth]+:lit=yes' 
+		OR "desc" ~ '\nsidewalk:[rightboth]+:lit=1' ) THEN '10'
+	WHEN ("desc" ~ '\nsidewalk:[rightboth]+:lit=no'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:lit=0') THEN '0'
+	ELSE NULL
+END
+
+"SW_l_lit"
+CASE WHEN ("desc" ~ '\nsidewalk:[leftboth]+:lit=yes' 
+		OR "desc" ~ '\nsidewalk:[leftboth]+:lit=1' ) THEN '10'
+	WHEN ("desc" ~ '\nsidewalk:[leftboth]+:lit=no'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:lit=0') THEN '0'
+	ELSE NULL
+END
+
+"CW_r_lit"
+CASE WHEN ("desc" ~ '\ncycleway:[rightboth]+:lit=yes' 
+		OR "desc" ~ '\ncycleway:[rightboth]+:lit=1' ) THEN '10'
+	WHEN ("desc" ~ '\ncycleway:[rightboth]+:lit=no'
+		OR "desc" ~ '\ncycleway:[rightboth]+:lit=0') THEN '0'
+	ELSE NULL
+END
+
+"CW_l_lit""
+CASE WHEN ("desc" ~ '\ncycleway:[leftboth]+:lit=yes' 
+		OR "desc" ~ '\ncycleway:[leftboth]+:lit=1' ) THEN '10'
+	WHEN ("desc" ~ '\ncycleway:[leftboth]+:lit=no'
+		OR "desc" ~ '\ncycleway:[leftboth]+:lit=0') THEN '0'
+	ELSE NULL
+END
+
+
+"HL_cb"
+CASE WHEN "desc" ~ '\nclass:bicycle=-3' THEN '-10'
+	WHEN "desc" ~ '\nclass:bicycle=-2' THEN '-5'
+	WHEN "desc" ~ '\nclass:bicycle=-1' THEN '-2'
+	WHEN "desc" ~ '\nclass:bicycle=1' THEN '2'
+	WHEN "desc" ~ '\nclass:bicycle=2' THEN '5'
+	WHEN "desc" ~ '\nclass:bicycle=3' THEN '10'
+	ELSE '0'
+END
+
+
+
+"SW_r_cb"
+CASE WHEN "desc" ~ '\nsidewalk:[rightboth]+:class:bicycle=-3' THEN '-10'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:class:bicycle=-2' THEN '-5'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:class:bicycle=-1' THEN '-2'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:class:bicycle=1' THEN '2'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:class:bicycle=2' THEN '5'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:class:bicycle=3' THEN '10'
+	ELSE '0'
+END
+
+"SW_l_cb"
+CASE WHEN "desc" ~ '\nsidewalk:[leftboth]+:class:bicycle=-3' THEN '-10'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:class:bicycle=-2' THEN '-5'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:class:bicycle=-1' THEN '-2'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:class:bicycle=1' THEN '2'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:class:bicycle=2' THEN '4'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:class:bicycle=3' THEN '10'
+	ELSE '0'
+END
+
+"CW_r_cb"
+CASE WHEN "desc" ~ '\ncycleway:[rightboth]+:class:bicycle=-3' THEN '-10'
+	WHEN "desc" ~ '\ncycleway:[rightboth]+:class:bicycle=-2' THEN '-5'
+	WHEN "desc" ~ '\ncycleway:[rightboth]+:class:bicycle=-1' THEN '-2'
+	WHEN "desc" ~ '\ncycleway:[rightboth]+:class:bicycle=1' THEN '2'
+	WHEN "desc" ~ '\ncycleway:[rightboth]+:class:bicycle=2' THEN '5'
+	WHEN "desc" ~ '\ncycleway:[rightboth]+:class:bicycle=3' THEN '10'
+	ELSE '0'
+END
+
+"CW_l_cb"
+CASE WHEN "desc" ~ '\ncycleway:[leftboth]+:class:bicycle=-3' THEN '-10'
+	WHEN "desc" ~ '\ncycleway:[leftboth]+:class:bicycle=-2' THEN '-5'
+	WHEN "desc" ~ '\ncycleway:[leftboth]+:class:bicycle=-1' THEN '-2'
+	WHEN "desc" ~ '\ncycleway:[leftboth]+:class:bicycle=1' THEN '2'
+	WHEN "desc" ~ '\ncycleway:[leftboth]+:class:bicycle=2' THEN '4'
+	WHEN "desc" ~ '\ncycleway:[leftboth]+:class:bicycle=3' THEN '10'
+	ELSE '0'
+END
+
+
+
+"HL_sm"
+CASE WHEN "desc" ~ '\nsmoothness=excellent' THEN '10'
+	WHEN "desc" ~ '\nsmoothness=good' THEN '5'
+	WHEN "desc" ~ '\nsmoothness=intermediate' THEN '-5'
+	WHEN "desc" ~ '\nsmoothness=bad' THEN '-10'
+	ELSE NULL
+END
+
+"SW_r_sm"
+CASE WHEN "desc" ~ '\nsidewalk:[rightboth]+:smoothness=excellent' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:smoothness=good' THEN '5'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:smoothness=intermediate' THEN '-5'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:smoothness=bad' THEN '10'
+	ELSE NULL
+END
+
+"SW_l_sm"
+CASE WHEN "desc" ~ '\nsidewalk:[leftboth]+:smoothness=excellent' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:smoothness=good' THEN '5'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:smoothness=intermediate' THEN '-5'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:smoothness=bad' THEN '10'
+	ELSE NULL
+END
+
+"CW_r_sm"
+CASE WHEN "desc" ~ '\ncycleway:[rightboth]+:smoothness=excellent' THEN '10'
+	WHEN "desc" ~ '\ncycleway:[rightboth]+:smoothness=good' THEN '5'
+	WHEN "desc" ~ '\ncycleway:[rightboth]+:smoothness=intermediate' THEN '-5'
+	WHEN "desc" ~ '\ncycleway:[rightboth]+:smoothness=bad' THEN '10'
+	ELSE NULL
+END
+
+"CW_l_sm"
+CASE WHEN "desc" ~ '\ncycleway:[leftboth]+:smoothness=excellent' THEN '10'
+	WHEN "desc" ~ '\ncycleway:[leftboth]+:smoothness=good' THEN '5'
+	WHEN "desc" ~ '\ncycleway:[leftboth]+:smoothness=intermediate' THEN '-5'
+	WHEN "desc" ~ '\ncycleway:[leftboth]+:smoothness=bad' THEN '10'
+	ELSE NULL
+END
+
+
+
+"HL_wn" dabei nehme ich auch =grass;sand / =gravel,sand etc. werte mit auf
+CASE WHEN "desc" ~ '\nsurface=paved' 
+		OR "desc" ~ '\nsurface=asphalt'
+		OR "desc" ~ '\nsurface=chipseal'
+		OR "desc" ~ '\nsurface=concrete'
+		OR "desc" ~ '\nsurface=concrete:lanes'
+		OR "desc" ~ '\nsurface=concrete:plates'
+		OR "desc" ~ '\nsurface=paving_stones'
+		OR "desc" ~ '\nsurface=sett'
+		OR "desc" ~ '\nsurface=unhewn_cobblestone'
+		OR "desc" ~ '\nsurface=cobblestone'
+		OR "desc" ~ '\nsurface=metal'
+		OR "desc" ~ '\nsurface=wood'
+	THEN '10'
+	WHEN "desc" ~ '\nsurface=unpaved' 
+		OR "desc" ~ '\nsurface=compacted'
+		OR "desc" ~ '\nsurface=fine_gravel'
+		OR "desc" ~ '\nsurface=compacted'
+		OR "desc" ~ '\nsurface=gravel'
+		OR "desc" ~ '\nsurface=rock'
+		OR "desc" ~ '\nsurface=pebblestone'
+		OR "desc" ~ '\nsurface=ground'
+		OR "desc" ~ '\nsurface=dirt'
+		OR "desc" ~ '\nsurface=earth'
+		OR "desc" ~ '\nsurface=grass'
+	THEN '0'
+	ELSE NULL
+END 
+
+"SW_r_wn"
+CASE WHEN "desc" ~ '\nsidewalk:[rightboth]+:surface=paved' 
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=asphalt'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=chipseal'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=concrete'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=concrete:lanes'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=concrete:plates'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=paving_stones'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=sett'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=unhewn_cobblestone'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=cobblestone'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=metal'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=wood'
+	THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:surface=unpaved' 
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=compacted'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=fine_gravel'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=compacted'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=gravel'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=rock'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=pebblestone'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=ground'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=dirt'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=earth'
+		OR "desc" ~ '\nsidewalk:[rightboth]+:surface=grass'
+	THEN '0'
+	ELSE NULL
+END 
+
+"SW_l_wn"
+CASE WHEN "desc" ~ '\nsidewalk:[leftboth]+:surface=paved' 
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=asphalt'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=chipseal'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=concrete'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=concrete:lanes'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=concrete:plates'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=paving_stones'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=sett'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=unhewn_cobblestone'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=cobblestone'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=metal'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=wood'
+	THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:surface=unpaved' 
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=compacted'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=fine_gravel'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=compacted'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=gravel'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=rock'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=pebblestone'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=ground'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=dirt'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=earth'
+		OR "desc" ~ '\nsidewalk:[leftboth]+:surface=grass'
+	THEN '0'
+	ELSE NULL
+END  
+
+"CW_r_wn"
+CASE WHEN "desc" ~ '\ncycleway:[rightboth]+:surface=paved' 
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=asphalt'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=chipseal'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=concrete'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=concrete:lanes'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=concrete:plates'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=paving_stones'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=sett'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=unhewn_cobblestone'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=cobblestone'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=metal'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=wood'
+	THEN '10'
+	WHEN "desc" ~ '\ncycleway:[rightboth]+:surface=unpaved' 
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=compacted'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=fine_gravel'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=compacted'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=gravel'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=rock'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=pebblestone'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=ground'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=dirt'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=earth'
+		OR "desc" ~ '\ncycleway:[rightboth]+:surface=grass'
+	THEN '0'
+	ELSE NULL
+END 
+
+"CW_l_wn"
+CASE WHEN "desc" ~ '\ncycleway:[leftboth]+:surface=paved' 
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=asphalt'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=chipseal'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=concrete'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=concrete:lanes'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=concrete:plates'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=paving_stones'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=sett'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=unhewn_cobblestone'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=cobblestone'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=metal'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=wood'
+	THEN '10'
+	WHEN "desc" ~ '\ncycleway:[leftboth]+:surface=unpaved' 
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=compacted'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=fine_gravel'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=compacted'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=gravel'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=rock'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=pebblestone'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=ground'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=dirt'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=earth'
+		OR "desc" ~ '\ncycleway:[leftboth]+:surface=grass'
+	THEN '0'
+	ELSE NULL
+END  
+
+
+
+"HL_ta"
+CASE WHEN "desc" ~ '\nhighway=cycleway' THEN '10'
+	WHEN "desc" ~ '\nhighway=path' THEN '10'
+	WHEN "desc" ~ '\nhighway=footway' THEN '10'
+	WHEN "desc" ~ '\nhighway=track' THEN '8'
+	WHEN "desc" ~ '\nhighway=pedestrian' THEN '8'
+	WHEN "desc" ~ '\nhighway=service' THEN '8'
+	WHEN "desc" ~ '\nhighway=living_street' THEN '4'
+	WHEN "desc" ~ '\nhighway=residential' THEN '-2'
+	WHEN "desc" ~ '\nhighway=unclassified' THEN '-4'
+	WHEN "desc" ~ '\nhighway=tertiary' THEN '-6'
+	WHEN "desc" ~ '\nhighway=secondary' THEN '-8'
+	WHEN "desc" ~ '\nhighway=primary' THEN '-10'
+	ELSE NULL
+END
+
+"SW_r_ta"
+CASE WHEN "desc" ~ '\nsidewalk:[rightboth]+:bicycle=yes' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=yes' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=yes' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:bicycle=designated' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=designated' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=designated' THEN '10'
+	ELSE NULL
+END
+
+"SW_l_ta"
+CASE WHEN "desc" ~ '\nsidewalk:[leftboth]+:bicycle=yes' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=yes' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=yes' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:bicycle=designated' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=designated' THEN '10'
+	WHEN "desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=designated' THEN '10'
+	ELSE NULL
+END
+
+"CW_r_ta"
+CASE WHEN "desc" ~ '\ncycleway[:rightboth]*=track' THEN '10'
+	ELSE NULL
+END
+
+"CW_l_ta"
+CASE WHEN "desc" ~ '\ncycleway[:leftboth]*=track' THEN '10'
+	ELSE NULL
+END
+
+
+
+"HL_tf"
+CASE WHEN (		"desc" ~ '\nbicycle=yes' 
+			OR 	"desc" ~ '\nbicycle=designated' 
+			OR 	"desc" ~ '\nhighway=cycleway') 
+	AND NOT (	"desc" ~ '\nfoot=yes' 
+			OR 	"desc" ~ '\nfoot=designated') 
+	THEN '10'
+	WHEN 	(
+				"desc" ~ '\nhighway=track'
+			OR 	"desc" ~ '\nhighway=service'
+			OR 	"desc" ~ '\nhighway=living_street'
+			OR 	"desc" ~ '\nhighway=residential'
+			OR 	"desc" ~ '\nhighway=unclassified'
+			OR 	"desc" ~ '\nhighway=tertiary'
+			OR 	"desc" ~ '\nhighway=secondary'
+			OR 	"desc" ~ '\nhighway=primary'
+			)
+			AND
+			(
+				"desc" ~ '\nsidewalk=yes'
+			OR 	"desc" ~ '\nsidewalk=right'
+			OR 	"desc" ~ '\nsidewalk=left'
+			OR 	"desc" ~ '\nsidewalk=both'
+			)
+	THEN '9'
+	WHEN 	(
+				"desc" ~ '\nhighway=track'
+			OR 	"desc" ~ '\nhighway=service'
+			OR 	"desc" ~ '\nhighway=residential'
+			OR 	"desc" ~ '\nhighway=unclassified'
+			OR 	"desc" ~ '\nhighway=tertiary'
+			OR 	"desc" ~ '\nhighway=secondary'
+			OR 	"desc" ~ '\nhighway=primary'
+			)
+			AND NOT
+			(
+				"desc" ~ '\nsidewalk=yes'
+			OR 	"desc" ~ '\nsidewalk=right'
+			OR 	"desc" ~ '\nsidewalk=left'
+			OR 	"desc" ~ '\nsidewalk=both'
+			)
+	THEN '6'
+	WHEN	(	
+				(	
+					(
+					"desc" ~ '\nbicycle=designated'
+					OR (
+							"desc" ~ '\nbicycle:forward=designated'
+						AND "desc" ~ '\nbicycle:backward=designated'
+						)
+					)
+				AND "desc" ~ '\nfoot=designated'					
+				)	
+					
+				AND (
+						(
+							"desc" ~ '\ntraffic_sign=DE:241'
+						OR (
+								"desc" ~ '\ntraffic_sign:forward=DE:241'
+							AND "desc" ~ '\ntraffic_sign:backward=DE:241'
+							)
+						)
+					OR "desc" ~ '\nsegregated=yes'
+					)
+				
+				AND NOT (
+							"desc" ~ '\noneway[:bicycle]*=yes'
+						OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+						)
+			)
+	THEN '3'
+	WHEN	(
+				(
+					(
+						"desc" ~ '\nbicycle:forward=designated'
+					AND "desc" ~ '\nbicycle:backward=yes'
+					) 
+				OR (
+						"desc" ~ '\nbicycle:backward=designated' 
+					AND "desc" ~ '\nbicycle:forward=yes'
+					)
+				AND "desc" ~ '\nfoot=designated'
+				)
+			
+			AND (
+					(
+						"desc" ~ '\ntraffic_sign=DE:241'
+					OR (
+							"desc" ~ '\ntraffic_sign:forward=DE:241'
+						AND "desc" ~ '\ntraffic_sign:backward=DE:241'
+						)
+					)
+				OR "desc" ~ '\nsegregated=yes'
+				)
+			
+			AND NOT (
+					"desc" ~ '\noneway[:bicycle]*=yes'
+				OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+				)
+			)
+	THEN '3'
+	WHEN	(
+				(
+					(
+						"desc" ~ '\nbicycle=designated'
+					OR 	"desc" ~ '\nbicycle:forward=designated'
+					OR 	"desc" ~ '\nbicycle:backward=designated'
+					)
+				AND "desc" ~ '\nfoot=designated'
+				)	
+				
+			AND (
+					(
+						"desc" ~ '\ntraffic_sign=DE:241'
+					OR 	"desc" ~ '\ntraffic_sign:forward=DE:241'
+					OR 	"desc" ~ '\ntraffic_sign:backward=DE:241'
+					)
+				OR "desc" ~ '\nsegregated=yes'
+				)
+	
+			AND (
+					"desc" ~ '\noneway[:bicycle]*=yes'
+				OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+				)
+			)
+	THEN '3'
+	WHEN 	
+			(	
+				(
+					(
+						"desc" ~ '\nbicycle=designated'
+					OR (
+							"desc" ~ '\nbicycle:forward=designated'
+						AND "desc" ~ '\nbicycle:backward=designated'
+						)
+					)
+				AND "desc" ~ '\nfoot=designated'
+				)
+								
+			AND (
+					(
+						"desc" ~ '\ntraffic_sign=DE:240'
+					OR (
+							"desc" ~ '\ntraffic_sign:forward=DE:240'
+						AND "desc" ~ '\ntraffic_sign:backward=DE:240'
+						)	
+					)
+				OR "desc" ~ '\nsegregated=no'
+				)
+		
+			AND NOT (
+						"desc" ~ '\noneway[:bicycle]*=yes'
+					OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+					)
+		)
+	THEN '-3'
+	WHEN 	(
+				(
+					(
+						(
+							"desc" ~ '\nbicycle:forward=designated'
+						AND "desc" ~ '\nbicycle:backward=yes'
+						) 
+					OR (
+							"desc" ~ '\nbicycle:backward=designated'
+						AND "desc" ~ '\nbicycle:forward=yes'
+						)
+					)
+				AND "desc" ~ '\nfoot=designated'
+				)
+	
+			AND (
+					(
+						"desc" ~ '\ntraffic_sign=DE:240'
+					OR	"desc" ~ '\ntraffic_sign:forward=DE:240'
+					OR 	"desc" ~ '\ntraffic_sign:backward=DE:240'
+					)
+				OR "desc" ~ '\nsegregated=no'
+				)
+		
+			AND NOT (
+						"desc" ~ '\noneway[:bicycle]*=yes'
+					OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+					)
+			)
+	THEN '-3'
+	WHEN 	(
+				(
+					(
+						"desc" ~ '\nbicycle=designated'
+					OR 	"desc" ~ '\nbicycle:forward=designated'
+					OR 	"desc" ~ '\nbicycle:backward=designated'
+					)
+				AND "desc" ~ '\nfoot=designated'
+				)
+					
+			AND (
+					(
+						"desc" ~ '\ntraffic_sign=DE:240'
+					OR	"desc" ~ '\ntraffic_sign:forward=DE:240'
+					OR 	"desc" ~ '\ntraffic_sign:backward=DE:240'
+					)
+				OR "desc" ~ '\nsegregated=no'
+				)
+
+			AND (
+					"desc" ~ '\noneway[:bicycle]*=yes'
+				OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+				)
+			)
+	THEN '-3'
+	WHEN "desc" ~ '\nhighway=living_street'
+	THEN '-6'
+	WHEN (
+		"desc" ~ '\nfoot=designated'
+	OR 	"desc" ~ '\nhighway=footway '
+	OR 	"desc" ~ '\ntraffic_sign=DE:239'
+	) 
+	AND "desc" ~ '\nbicycle=yes'
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	THEN '-9'
+	WHEN (
+			"desc" ~ '\nfoot=designated'
+		OR 	"desc" ~ '\nhighway=footway'
+		OR 	"desc" ~ '\ntraffic_sign=DE:239'
+		)  
+	AND (
+			"desc" ~ '\nbicycle=yes'
+		OR 	"desc" ~ '\nbicycle:forward=yes'
+		OR 	"desc" ~ '\nbicycle:backward=yes'
+		) 
+	AND (
+			"desc" ~ '\noneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+		)
+	THEN '-9'
+	WHEN (
+			"desc" ~ '\nhighway=pedestrian'
+		AND (
+				"desc" ~ '\nbicycle=yes'
+			OR 	"desc" ~ '\ntraffic_sign.*;1022-10'
+			)
+		)
+	THEN '-10'
+	ELSE '0'
+END
+
+SW_r_tf
+CASE WHEN (		"desc" ~ '\nsidewalk:[rightboth]+:bicycle=yes' 
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:foot=designated') 
+	THEN '10'
+	WHEN	(
+		(
+			"desc" ~ '\nsidewalk:[rightboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign=DE:241'
+				OR (
+						"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:forward=DE:241 '
+					AND "desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:backward=DE:241'
+					)
+				
+				)
+			OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=yes'
+			)
+		)
+		AND "desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+	)
+	AND NOT (
+				"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '3'
+	WHEN		(
+		(
+			(
+				"desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=designated' 
+			AND "desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=yes'
+			)
+		)
+		AND "desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign=DE:241 '
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:forward=DE:241' 
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:backward=DE:241'
+			)
+		OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=yes'
+		)
+	AND NOT (
+				"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '3'
+	WHEN (
+		(
+			"desc" ~ '\nsidewalk:[rightboth]+:bicycle=designated'
+		OR 	"desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=designated'
+		)
+		AND "desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign=DE:241'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:forward=DE:241'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:backward=DE:241'
+			)
+		OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=yes'
+		)
+	
+	AND (
+			"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '3'
+	WHEN (
+		(
+			"desc" ~ '\nsidewalk:[rightboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign=DE:240'
+				OR (
+						"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:forward=DE:240'
+					AND "desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:backward=DE:240'
+					)
+				
+				)
+			OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=no'
+			)
+		)
+		AND "desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+	)
+	AND NOT (
+				"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-3'
+	WHEN 	(
+		(
+			(
+				"desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=designated'
+			AND "desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=yes'
+			)
+		)
+		AND "desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign=DE:240'
+			OR "desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:forward=DE:240'
+			OR "desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=no'
+		)
+	AND NOT (
+				"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-3'
+	WHEN 	(
+		(
+			"desc" ~ '\nsidewalk:[rightboth]+:bicycle=designated'
+		OR 	"desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=designated'
+		)
+		AND "desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign=DE:240'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:forward=DE:240'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=no'
+		)
+	
+	AND (
+			"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '-3'
+	WHEN (
+		"desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+	OR 	"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign=DE:239'
+	) 
+	AND "desc" ~ '\nsidewalk:[rightboth]+:bicycle=yes'
+	AND NOT (
+				"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-9'
+	WHEN (
+			"desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+		OR 	"desc" ~ '\nsidewalk:[rightboth]+:traffic_sign=DE:239'
+		)  
+	AND (
+			"desc" ~ '\nsidewalk:[rightboth]+:bicycle=yes'
+		OR 	"desc" ~ '\nsidewalk:[rightboth]+:bicycle:forward=yes'
+		OR 	"desc" ~ '\nsidewalk:[rightboth]+:bicycle:backward=yes'
+		) 
+	AND (
+			"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '-9'
+END
+
+SW_l_tf
+CASE WHEN (		"desc" ~ '\nsidewalk:[leftboth]+:bicycle=yes' 
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:foot=designated') 
+	THEN '10'
+	WHEN	(
+		(
+			"desc" ~ '\nsidewalk:[leftboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign=DE:241'
+				OR (
+						"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:forward=DE:241 '
+					AND "desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:backward=DE:241'
+					)
+				
+				)
+			OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=yes'
+			)
+		)
+		AND "desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+	)
+	AND NOT (
+				"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '3'
+	WHEN		(
+		(
+			(
+				"desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=designated' 
+			AND "desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=yes'
+			)
+		)
+		AND "desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign=DE:241 '
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:forward=DE:241' 
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:backward=DE:241'
+			)
+		OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=yes'
+		)
+	AND NOT (
+				"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '3'
+	WHEN (
+		(
+			"desc" ~ '\nsidewalk:[leftboth]+:bicycle=designated'
+		OR 	"desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=designated'
+		)
+		AND "desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign=DE:241'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:forward=DE:241'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:backward=DE:241'
+			)
+		OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=yes'
+		)
+	
+	AND (
+			"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '3'
+	WHEN (
+		(
+			"desc" ~ '\nsidewalk:[leftboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign=DE:240'
+				OR (
+						"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:forward=DE:240'
+					AND "desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:backward=DE:240'
+					)
+				
+				)
+			OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=no'
+			)
+		)
+		AND "desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+	)
+	AND NOT (
+				"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-3'
+	WHEN 	(
+		(
+			(
+				"desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=designated'
+			AND "desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=yes'
+			)
+		)
+		AND "desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign=DE:240'
+			OR "desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:forward=DE:240'
+			OR "desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=no'
+		)
+	AND NOT (
+				"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-3'
+	WHEN 	(
+		(
+			"desc" ~ '\nsidewalk:[leftboth]+:bicycle=designated'
+		OR 	"desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=designated'
+		)
+		AND "desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign=DE:240'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:forward=DE:240'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=no'
+		)
+	
+	AND (
+			"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '-3'
+	WHEN (
+		"desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+	OR 	"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign=DE:239'
+	) 
+	AND "desc" ~ '\nsidewalk:[leftboth]+:bicycle=yes'
+	AND NOT (
+				"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-9'
+	
+	WHEN (
+			"desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+		OR 	"desc" ~ '\nsidewalk:[leftboth]+:traffic_sign=DE:239'
+		)  
+	AND (
+			"desc" ~ '\nsidewalk:[leftboth]+:bicycle=yes'
+		OR 	"desc" ~ '\nsidewalk:[leftboth]+:bicycle:forward=yes'
+		OR 	"desc" ~ '\nsidewalk:[leftboth]+:bicycle:backward=yes'
+		) 
+	AND (
+			"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '-9'
+END
+
+CW_r_tf
+CASE WHEN (		"desc" ~ '\ncycleway:[rightboth]+:bicycle=yes' 
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated') 
+	AND NOT (
+				(		"desc" ~ '\ncycleway:[rightboth]+:foot=yes' 
+					OR 	"desc" ~ '\ncycleway:[rightboth]+:foot=designated') 
+			OR
+				(		"desc" ~ '\nsidewalk:[rightboth]+:foot=yes' 
+					OR 	"desc" ~ '\nsidewalk:[rightboth]+:foot=designated') 
+			)
+	THEN '10'
+	WHEN	(
+		(
+			"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:241'
+				OR (
+						"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:241 '
+					AND "desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:241'
+					)
+				
+				)
+			OR ("desc" ~ '\ncycleway:[rightboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=yes')
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '3'
+	WHEN		(
+		(
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated' 
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=yes'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:241 '
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:241' 
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:241'
+			)
+		OR ("desc" ~ '\ncycleway:[rightboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=yes')
+		)
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '3'
+	WHEN (
+		(
+			"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:241'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:241'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:241'
+			)
+		OR ("desc" ~ '\ncycleway:[rightboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=yes')
+		)
+	
+	AND (
+			"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '3'
+	WHEN (
+		(
+			"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:240'
+				OR (
+						"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:240'
+					AND "desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:240'
+					)
+				
+				)
+			OR ("desc" ~ '\ncycleway:[rightboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=yes')
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-3'
+	WHEN 	(
+		(
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=yes'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:240'
+			OR "desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:240'
+			OR "desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:240'
+			)
+		OR ("desc" ~ '\ncycleway:[rightboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=yes')
+		)
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-3'
+
+	WHEN 	(
+		(
+			"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:240'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:240'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:240'
+			)
+		OR ("desc" ~ '\ncycleway:[rightboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[rightboth]+:segregated=yes')
+		)
+	
+	AND (
+			"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '-3'
+	WHEN (
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:foot=designated'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:239'
+			)
+			OR
+				(		"desc" ~ '\nsidewalk:[rightboth]+:foot=yes' 
+					OR 	"desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+		)
+	AND "desc" ~ '\ncycleway:[rightboth]+:bicycle=yes'
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-9'
+	WHEN (
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:foot=designated'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:239'
+			)
+			OR
+				(		"desc" ~ '\nsidewalk:[rightboth]+:foot=yes' 
+					OR 	"desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+		) 
+	AND (
+			"desc" ~ '\ncycleway:[rightboth]+:bicycle=yes'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=yes'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=yes'
+		) 
+	AND (
+			"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '-9'
+END
+
+CW_l_tf
+CASE WHEN (		"desc" ~ '\ncycleway:[leftboth]+:bicycle=yes' 
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated') 
+	AND NOT (
+				(		"desc" ~ '\ncycleway:[leftboth]+:foot=yes' 
+					OR 	"desc" ~ '\ncycleway:[leftboth]+:foot=designated') 
+			OR
+				(		"desc" ~ '\nsidewalk:[leftboth]+:foot=yes' 
+					OR 	"desc" ~ '\nsidewalk:[leftboth]+:foot=designated') 
+			)
+	THEN '10'
+	WHEN	(
+		(
+			"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:241'
+				OR (
+						"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:241 '
+					AND "desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:241'
+					)
+				
+				)
+			OR ("desc" ~ '\ncycleway:[leftboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=yes')
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '3'
+	WHEN		(
+		(
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated' 
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=yes'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:241 '
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:241' 
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:241'
+			)
+		OR ("desc" ~ '\ncycleway:[leftboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=yes')
+		)
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '3'
+	WHEN (
+		(
+			"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:241'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:241'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:241'
+			)
+		OR ("desc" ~ '\ncycleway:[leftboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=yes')
+		)
+	
+	AND (
+			"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '3'
+	WHEN (
+		(
+			"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:240'
+				OR (
+						"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:240'
+					AND "desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:240'
+					)
+				
+				)
+			OR ("desc" ~ '\ncycleway:[leftboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=yes')
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-3'
+	WHEN 	(
+		(
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=yes'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:240'
+			OR "desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:240'
+			OR "desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:240'
+			)
+		OR ("desc" ~ '\ncycleway:[leftboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=yes')
+		)
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-3'
+	WHEN 	(
+		(
+			"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:240'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:240'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:240'
+			)
+		OR ("desc" ~ '\ncycleway:[leftboth]+:segregated=yes' OR "desc" ~ '\nsidewalk:[leftboth]+:segregated=yes')
+		)
+	
+	AND (
+			"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '-3'
+	WHEN (
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:foot=designated'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:239'
+			)
+			OR
+				(		"desc" ~ '\nsidewalk:[leftboth]+:foot=yes' 
+					OR 	"desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+		)
+	AND "desc" ~ '\ncycleway:[leftboth]+:bicycle=yes'
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-9'
+	WHEN (
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:foot=designated'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:239'
+			)
+			OR
+				(		"desc" ~ '\nsidewalk:[leftboth]+:foot=yes' 
+					OR 	"desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+		) 
+	AND (
+			"desc" ~ '\ncycleway:[leftboth]+:bicycle=yes'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=yes'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=yes'
+		) 
+	AND (
+			"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+		)
+	THEN '-9'
+END
+
+
+
+"desc_line" (string, 5000)
+replace("desc", '\n', '|')
+
+"HL_width0" (string, 10)
+regexp_replace("desc_line", '.*\|[est_]*width=', '')
+
+"HL_width" (real, 10)
+left("HL_width0", (strpos("HL_width0", '|' )-1))
+
+
+"HL_maxw0" (string, 10)
+regexp_replace("desc_line", '.*\|maxwidth:physical=', '')
+
+"HL_maxw" (real, 10)
+left("HL_maxw0", (strpos("HL_maxw0", '|' )-1))
+
+
+"SW_r_width0" 
+regexp_replace("desc_line", '.*\|sidewalk:[bothright]+:[est_]*width=', '')
+
+"SW_r_width"
+left("SW_r_width0", (strpos("SW_r_width0", '|' )-1))
+
+
+"SW_r_maxw0"
+regexp_replace("desc_line", '.*\|sidewalk:[bothright]+:maxwidth:physical=', '')
+
+"SW_r_maxw"
+left("SW_r_maxw0", (strpos("SW_r_maxw0", '|' )-1))
+
+
+"SW_l_width0"
+regexp_replace("desc_line", '.*\|sidewalk:[bothleft]+:[est_]*width=', '')
+
+"SW_l_width"
+left("SW_l_width0", (strpos("SW_l_width0", '|' )-1))
+
+
+"SW_l_maxw0"
+regexp_replace("desc_line", '.*\|sidewalk:[bothleft]+:maxwidth:physical=', '')
+
+"SW_l_maxw"
+left("SW_l_maxw0", (strpos("SW_l_maxw0", '|' )-1))
+
+
+"CW_r_width0"
+regexp_replace("desc_line", '.*\|cycleway:[bothright]+:[est_]*width=', '')
+
+"CW_r_width"
+left("CW_r_width0", (strpos("CW_r_width0", '|' )-1))
+
+
+"CW_r_maxw0"
+regexp_replace("desc_line", '.*\|cycleway:[bothright]+:maxwidth:physical=', '')
+
+"CW_r_maxw"
+left("CW_r_maxw0", (strpos("CW_r_maxw0", '|' )-1))
+
+
+"CW_l_width0"
+regexp_replace("desc_line", '.*\|cycleway:[bothleft]+:[est_]*width=', '')
+
+"CW_l_width"
+left("CW_l_width0", (strpos("CW_l_width0", '|' )-1))
+
+
+"CW_l_maxw0"
+regexp_replace("desc_line", '.*\|cycleway:[bothleft]+:maxwidth:physical=', '')
+
+"CW_l_maxw"
+left("CW_l_maxw0", (strpos("CW_l_maxw0", '|' )-1))
+
+
+
+"HL_w"
+CASE 	WHEN "HL_width" > "HL_maxw" THEN "HL_maxw"
+		WHEN "HL_width" > "HL_maxw" THEN "HL_maxw"
+		WHEN "HL_maxw" IS NOT NULL THEN "HL_maxw"
+		WHEN "HL_width" IS NOT NULL THEN "HL_width"
+END
+
+"SW_r_w"
+CASE 	WHEN "SW_r_width" > "SW_r_maxw" THEN "SW_r_maxw"
+		WHEN "SW_r_width" < "SW_r_maxw" THEN "SW_r_width"
+		WHEN "SW_r_maxw" IS NOT NULL THEN "SW_r_maxw"
+		WHEN "SW_r_width" IS NOT NULL THEN "SW_r_width"
+END
+
+"SW_l_w"
+CASE 	WHEN "SW_l_width" > "SW_l_maxw" THEN "SW_l_maxw"
+		WHEN "SW_l_width" < "SW_l_maxw" THEN "SW_l_width"
+		WHEN "SW_l_maxw" IS NOT NULL THEN "SW_l_maxw"
+		WHEN "SW_l_width" IS NOT NULL THEN "SW_l_width"
+END
+
+"CW_r_w"
+CASE 	WHEN "CW_r_width" > "CW_r_maxw" THEN "CW_r_maxw"
+		WHEN "CW_r_width" < "CW_r_maxw" THEN "CW_r_width"
+		WHEN "CW_r_maxw" IS NOT NULL THEN "CW_r_maxw"
+		WHEN "CW_r_width" IS NOT NULL THEN "CW_r_width"
+END
+
+"CW_l_w"
+CASE 	WHEN "CW_l_width" > "CW_l_maxw" THEN "CW_l_maxw"
+		WHEN "CW_l_width" < "CW_l_maxw" THEN "CW_l_width"
+		WHEN "CW_l_maxw" IS NOT NULL THEN "CW_l_maxw"
+		WHEN "CW_l_width" IS NOT NULL THEN "CW_l_width"
+END
+
+
+
+"HL_wp"
+CASE WHEN ( 	"desc" ~ '\nbicycle=designated' 
+			OR 	"desc" ~ '\nhighway=cycleway') 
+	AND NOT (	"desc" ~ '\nfoot=yes' 
+			OR 	"desc" ~ '\nfoot=designated')
+	AND (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND 	"HL_w" < '1,6'
+	THEN '-10'
+	
+	WHEN ( 	"desc" ~ '\nbicycle=designated' 
+			OR 	"desc" ~ '\nhighway=cycleway') 
+	AND NOT (	"desc" ~ '\nfoot=yes' 
+			OR 	"desc" ~ '\nfoot=designated')
+	AND (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND 	"HL_w" < '2,0'
+	THEN '-5'
+	WHEN ( 	"desc" ~ '\nbicycle=designated' 
+			OR 	"desc" ~ '\nhighway=cycleway') 
+	AND NOT (	"desc" ~ '\nfoot=yes' 
+			OR 	"desc" ~ '\nfoot=designated')
+	AND (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND 	"HL_w" >= '2,0'
+	THEN '1'
+	
+	WHEN ( 	"desc" ~ '\nbicycle=designated' 
+			OR 	"desc" ~ '\nhighway=cycleway') 
+	AND NOT (	"desc" ~ '\nfoot=yes' 
+			OR 	"desc" ~ '\nfoot=designated')
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND 	"HL_w" < '2,0'
+	THEN '-10'
+	WHEN ( 	"desc" ~ '\nbicycle=designated' 
+			OR 	"desc" ~ '\nhighway=cycleway') 
+	AND NOT (	"desc" ~ '\nfoot=yes' 
+			OR 	"desc" ~ '\nfoot=designated')
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND 	"HL_w" < '2,5'
+	THEN '-5'
+	WHEN ( 	"desc" ~ '\nbicycle=designated' 
+			OR 	"desc" ~ '\nhighway=cycleway') 
+	AND NOT (	"desc" ~ '\nfoot=yes' 
+			OR 	"desc" ~ '\nfoot=designated')
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND 	"HL_w" >= '2,5'
+	THEN '1'
+	WHEN ((
+		(
+			"desc" ~ '\nbicycle=designated'
+		OR (
+				"desc" ~ '\nbicycle:forward=designated'
+			AND "desc" ~ '\nbicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\ntraffic_sign=DE:240'
+				OR (
+						"desc" ~ '\ntraffic_sign:forward=DE:240'
+					AND "desc" ~ '\ntraffic_sign:backward=DE:240'
+					)
+				
+				)
+			OR "desc" ~ '\nsegregated=no'
+			)
+		)
+		AND "desc" ~ '\nfoot=designated'
+	)
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	OR	(
+		(
+			(
+				"desc" ~ '\nbicycle:forward=designated'
+			AND "desc" ~ '\nbicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\nbicycle:backward=designated'
+			AND "desc" ~ '\nbicycle:forward=yes'
+			)
+		)
+		AND "desc" ~ '\nfoot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\ntraffic_sign=DE:240'
+			OR "desc" ~ '\ntraffic_sign:forward=DE:240'
+			OR "desc" ~ '\ntraffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\nsegregated=no'
+		)
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	OR (
+		(
+			"desc" ~ '\nbicycle=designated'
+		OR 	"desc" ~ '\nbicycle:forward=designated'
+		OR 	"desc" ~ '\nbicycle:backward=designated'
+		)
+		AND "desc" ~ '\nfoot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\ntraffic_sign=DE:240'
+			OR 	"desc" ~ '\ntraffic_sign:forward=DE:240'
+			OR 	"desc" ~ '\ntraffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\nsegregated=no'
+		)
+	
+	AND (
+			"desc" ~ '\noneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+		)
+	
+	)
+	AND "HL_w" < '2,5'
+	THEN '-10'
+	WHEN ((
+		(
+			"desc" ~ '\nbicycle=designated'
+		OR (
+				"desc" ~ '\nbicycle:forward=designated'
+			AND "desc" ~ '\nbicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\ntraffic_sign=DE:240'
+				OR (
+						"desc" ~ '\ntraffic_sign:forward=DE:240'
+					AND "desc" ~ '\ntraffic_sign:backward=DE:240'
+					)
+				
+				)
+			OR "desc" ~ '\nsegregated=no'
+			)
+		)
+		AND "desc" ~ '\nfoot=designated'
+	)
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	OR	(
+		(
+			(
+				"desc" ~ '\nbicycle:forward=designated'
+			AND "desc" ~ '\nbicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\nbicycle:backward=designated'
+			AND "desc" ~ '\nbicycle:forward=yes'
+			)
+		)
+		AND "desc" ~ '\nfoot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\ntraffic_sign=DE:240'
+			OR "desc" ~ '\ntraffic_sign:forward=DE:240'
+			OR "desc" ~ '\ntraffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\nsegregated=no'
+		)
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	OR (
+		(
+			"desc" ~ '\nbicycle=designated'
+		OR 	"desc" ~ '\nbicycle:forward=designated'
+		OR 	"desc" ~ '\nbicycle:backward=designated'
+		)
+		AND "desc" ~ '\nfoot=designated'
+	)
+	AND (
+			(
+				"desc" ~ '\ntraffic_sign=DE:240'
+			OR 	"desc" ~ '\ntraffic_sign:forward=DE:240'
+			OR 	"desc" ~ '\ntraffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\nsegregated=no'
+		)
+	
+	AND (
+			"desc" ~ '\noneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+		)
+	
+	)
+	AND "HL_w" >= '2,5'
+	THEN '1'
+	WHEN (
+		"desc" ~ '\nfoot=designated'
+	OR 	"desc" ~ '\nhighway=footway '
+	OR 	"desc" ~ '\ntraffic_sign=DE:239'
+	) 
+	AND "desc" ~ '\nbicycle=yes'
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND "HL_w" < '2,5'
+	THEN '-10'
+	WHEN (
+		"desc" ~ '\nfoot=designated'
+	OR 	"desc" ~ '\nhighway=footway '
+	OR 	"desc" ~ '\ntraffic_sign=DE:239'
+	) 
+	AND "desc" ~ '\nbicycle=yes'
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND "HL_w" < '3,0'
+	THEN '-5'
+	WHEN (
+		"desc" ~ '\nfoot=designated'
+	OR 	"desc" ~ '\nhighway=footway '
+	OR 	"desc" ~ '\ntraffic_sign=DE:239'
+	) 
+	AND "desc" ~ '\nbicycle=yes'
+	AND NOT (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND "HL_w" >= '3,0'
+	THEN '1'
+	WHEN (
+		"desc" ~ '\nfoot=designated'
+	OR 	"desc" ~ '\nhighway=footway '
+	OR 	"desc" ~ '\ntraffic_sign=DE:239'
+	) 
+	AND "desc" ~ '\nbicycle=yes'
+	AND (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND "HL_w" < '2,5'
+	THEN '-10'
+	WHEN (
+		"desc" ~ '\nfoot=designated'
+	OR 	"desc" ~ '\nhighway=footway '
+	OR 	"desc" ~ '\ntraffic_sign=DE:239'
+	) 
+	AND "desc" ~ '\nbicycle=yes'
+	AND (
+				"desc" ~ '\noneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\noneway[:bicycle]*=-1'
+			)
+	AND "HL_w" >= '2,5'
+	THEN '1'
+	ELSE '0'
+END
+
+"SW_r_wp"
+CASE WHEN "SW_r_w" < '2,5' AND NOT (
+				"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-10'
+	WHEN "SW_r_w" < '3,0' AND NOT (
+				"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-5'
+	WHEN "SW_r_w" >= '3,0' AND NOT (
+				"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '1'
+	WHEN "SW_r_w" < '2,5' AND (
+				"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-10'
+	WHEN "SW_r_w" > '2,5' AND (
+				"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '1'
+	ELSE '0'
+	END
+
+"SW_l_wp"
+CASE WHEN "SW_l_w" < '2,5' AND NOT (
+				"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-10'
+	WHEN "SW_l_w" < '3,0' AND NOT (
+				"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-5'
+	WHEN "SW_l_w" >= '3,0' AND NOT (
+				"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '1'
+	WHEN "SW_l_w" < '2,5' AND (
+				"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '-10'
+	WHEN "SW_l_w" > '2,5' AND (
+				"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	THEN '1'
+	ELSE '0'
+	END
+
+"CW_r_wp"
+CASE WHEN ( 	"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:foot=designated')
+	AND (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_r_w" < '1,6'
+	THEN '-10'
+	WHEN ( 	"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:foot=designated')
+	AND (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_r_w" < '2,0'
+	THEN '-5'
+	WHEN ( 	"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:foot=designated')
+	AND (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_r_w" >= '2,0'
+	THEN '1'
+	WHEN ( 	"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:foot=designated')
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_r_w" < '2,0'
+	THEN '-10'
+	WHEN ( 	"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:foot=designated')
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_r_w" < '2,5'
+	THEN '-5'
+	WHEN ( 	"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[rightboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[rightboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:foot=designated')
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_r_w" >= '2,5'
+	THEN '1'
+	WHEN ((
+		(
+			"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:240'
+				OR (
+						"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:240'
+					AND "desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:240'
+					)
+				
+				)
+			OR "desc" ~ '\ncycleway:[rightboth]+:segregated=no'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	OR	(
+		(
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=yes'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:240'
+			OR "desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:240'
+			OR "desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\ncycleway:[rightboth]+:segregated=no'
+		)
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	OR (
+		(
+			"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+		)
+		AND  ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:240'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:240'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\ncycleway:[rightboth]+:segregated=no'
+		)
+	
+	AND (
+			"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+		)
+	
+	)
+	AND "CW_r_w" < '2,5'
+	THEN '-10'
+	WHEN ((
+		(
+			"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:240'
+				OR (
+						"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:240'
+					AND "desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:240'
+					)
+				
+				)
+			OR "desc" ~ '\ncycleway:[rightboth]+:segregated=no'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	OR	(
+		(
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+			AND "desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=yes'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:240'
+			OR "desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:240'
+			OR "desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\ncycleway:[rightboth]+:segregated=no'
+		)
+	AND NOT (
+				"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+			)
+	OR (
+		(
+			"desc" ~ '\ncycleway:[rightboth]+:bicycle=designated'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:bicycle:backward=designated'
+		)
+		AND ("desc" ~ '\ncycleway:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[rightboth]+:foot=designated' OR "desc" ~ '\nsidewalk=[rightboth]+')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[rightboth]+:traffic_sign=DE:240'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:forward=DE:240'
+			OR 	"desc" ~ '\ncycleway:[rightboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\ncycleway:[rightboth]+:segregated=no'
+		)
+	
+	AND (
+			"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\ncycleway:[rightboth]+:oneway[:bicycle]*=-1'
+		)
+	
+	)
+	AND "CW_r_w" >= '2,5'
+	THEN '1'
+	ELSE '0'
+END
+
+"CW_l_wp"
+CASE WHEN ( 	"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:foot=designated')
+	AND (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_l_w" < '1,6'
+	THEN '-10'
+	WHEN ( 	"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:foot=designated')
+	AND (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_l_w" < '2,0'
+	THEN '-5'
+	WHEN ( 	"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:foot=designated')
+	AND (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_l_w" >= '2,0'
+	THEN '1'
+	WHEN ( 	"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:foot=designated')
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_l_w" < '2,0'
+	THEN '-10'
+	WHEN ( 	"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:foot=designated')
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_l_w" < '2,5'
+	THEN '-5'
+	WHEN ( 	"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated') 
+	AND NOT (	"desc" ~ '\nsidewalk:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\nsidewalk:[leftboth]+:foot=designated'
+			OR "desc" ~ '\ncycleway:[leftboth]+:foot=yes' 
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:foot=designated')
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	AND 	"CW_l_w" >= '2,5'
+	THEN '1'
+	WHEN ((
+		(
+			"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:240'
+				OR (
+						"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:240'
+					AND "desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:240'
+					)
+				
+				)
+			OR "desc" ~ '\ncycleway:[leftboth]+:segregated=no'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	OR	(
+		(
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=yes'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:240'
+			OR "desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:240'
+			OR "desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\ncycleway:[leftboth]+:segregated=no'
+		)
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	OR (
+		(
+			"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+		)
+		AND  ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:240'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:240'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\ncycleway:[leftboth]+:segregated=no'
+		)
+	
+	AND (
+			"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+		)
+	
+	)
+	AND "CW_l_w" < '2,5'
+	THEN '-10'
+	WHEN ((
+		(
+			"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated'
+		OR (
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+			)
+		AND (
+				(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:240'
+				OR (
+						"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:240'
+					AND "desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:240'
+					)
+				
+				)
+			OR "desc" ~ '\ncycleway:[leftboth]+:segregated=no'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	OR	(
+		(
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=yes'
+			) 
+		OR (
+				"desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+			AND "desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=yes'
+			)
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:240'
+			OR "desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:240'
+			OR "desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\ncycleway:[leftboth]+:segregated=no'
+		)
+	AND NOT (
+				"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+			)
+	OR (
+		(
+			"desc" ~ '\ncycleway:[leftboth]+:bicycle=designated'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle:forward=designated'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:bicycle:backward=designated'
+		)
+		AND ("desc" ~ '\ncycleway:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk:[leftboth]+:foot=designated' OR "desc" ~ '\nsidewalk=[leftboth]+')
+	)
+	AND (
+			(
+				"desc" ~ '\ncycleway:[leftboth]+:traffic_sign=DE:240'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:forward=DE:240'
+			OR 	"desc" ~ '\ncycleway:[leftboth]+:traffic_sign:backward=DE:240'
+			)
+		OR "desc" ~ '\ncycleway:[leftboth]+:segregated=no'
+		)
+	
+	AND (
+			"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=yes'
+		OR 	"desc" ~ '\ncycleway:[leftboth]+:oneway[:bicycle]*=-1'
+		)
+	
+	)
+	AND "CW_l_w" >= '2,5'
+	THEN '1'
+	ELSE '0'
+END
+
+
+"HL_oneway"
+CASE WHEN ("desc" ~ 'oneway[:bicycle]*=yes'
+OR ("desc" ~ 'bicycle:backward=[nouse_sidepath]+' AND "desc" ~ 'bicycle:forward=[yesdesignated]+'))
+THEN '1'
+WHEN ("desc" ~ 'oneway[:bicycle]*=-1'
+OR ("desc" ~ 'bicycle:forward=[nouse_sidepath]+' AND "desc" ~ 'bicycle:backward=[yesdesignated]+'))
+THEN '-1'
+ELSE '0'
+END
+
+"SW_r_oneway"
+CASE WHEN ("desc" ~ 'sidewalk:[rightboth]+:oneway[:bicycle]*=yes'
+OR ("desc" ~ 'sidewalk:[rightboth]+:bicycle:backward=[nouse_sidepath]+' AND "desc" ~ 'sidewalk:[rightboth]+:bicycle:forward=[yesdesignated]+'))
+THEN '1'
+WHEN ("desc" ~ 'sidewalk:[rightboth]+:oneway[:bicycle]*=-1'
+OR ("desc" ~ 'sidewalk:[rightboth]+:bicycle:forward=[nouse_sidepath]+' AND "desc" ~ 'sidewalk:[rightboth]+:bicycle:backward=[yesdesignated]+'))
+THEN '-1'
+ELSE '0'
+END
+
+"SW_l_oneway"
+CASE WHEN ("desc" ~ 'sidewalk:[leftboth]+:oneway[:bicycle]*=yes'
+OR ("desc" ~ 'sidewalk:[leftboth]+:bicycle:backward=[nouse_sidepath]+' AND "desc" ~ 'sidewalk:[leftboth]+:bicycle:forward=[yesdesignated]+'))
+THEN '1'
+WHEN ("desc" ~ 'sidewalk:[leftboth]+:oneway[:bicycle]*=-1'
+OR ("desc" ~ 'sidewalk:[leftboth]+:bicycle:forward=[nouse_sidepath]+' AND "desc" ~ 'sidewalk:[leftboth]+:bicycle:backward=[yesdesignated]+'))
+THEN '-1'
+ELSE '0'
+END
+
+"CW_r_oneway"
+CASE WHEN ("desc" ~ 'cycleway:[rightboth]+:oneway[:bicycle]*=yes'
+OR ("desc" ~ 'cycleway:[rightboth]+:bicycle:backward=[nouse_sidepath]+' AND "desc" ~ 'cycleway:[rightboth]+:bicycle:forward=[yesdesignated]+'))
+THEN '1'
+WHEN ("desc" ~ 'cycleway:[rightboth]+:oneway[:bicycle]*=-1'
+OR ("desc" ~ 'cycleway:[rightboth]+:bicycle:forward=[nouse_sidepath]+' AND "desc" ~ 'cycleway:[rightboth]+:bicycle:backward=[yesdesignated]+'))
+THEN '-1'
+ELSE '0'
+END
+
+"CW_l_oneway"
+CASE WHEN ("desc" ~ 'cycleway:[leftboth]+:oneway[:bicycle]*=yes'
+OR ("desc" ~ 'cycleway:[leftboth]+:bicycle:backward=[nouse_sidepath]+' AND "desc" ~ 'cycleway:[leftboth]+:bicycle:forward=[yesdesignated]+'))
+THEN '1'
+WHEN ("desc" ~ 'cycleway:[leftboth]+:oneway[:bicycle]*=-1'
+OR ("desc" ~ 'cycleway:[leftboth]+:bicycle:forward=[nouse_sidepath]+' AND "desc" ~ 'cycleway:[leftboth]+:bicycle:backward=[yesdesignated]+'))
+THEN '-1'
+ELSE '0'
+END
